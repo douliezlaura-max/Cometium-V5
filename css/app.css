@@ -1,37 +1,67 @@
+/* ==========================================================================
+   Cometium design tokens — "ion trail" theme.
+   Legacy names (--bg, --fg, --accent, --blue, ...) are kept because page JS
+   writes them in inline styles; only their values changed.
+   ========================================================================== */
 :root {
-  --bg:          #0a0b0e;
-  --bg-elev:    #111318;
-  --bg-elev-2:  #171a1f;
-  --bg-hover:   #1d2026;
-  --border:     #23262c;
-  --border-soft:#1b1e22;
+  /* surfaces: deep space ink, slightly blue */
+  --bg:          #06070b;
+  --bg-elev:     rgba(16, 18, 27, .72);   /* glass card */
+  --bg-elev-2:   rgba(24, 27, 39, .78);   /* inputs, nested */
+  --bg-hover:    rgba(40, 45, 64, .55);
+  --bg-solid:    #0e1018;                 /* opaque fallback for menus/modals */
+  --border:      rgba(148, 163, 220, .14);
+  --border-soft: rgba(148, 163, 220, .08);
+  --border-strong: rgba(148, 163, 220, .24);
+  --line:        var(--border-soft);
 
-  --fg:         #eaecef;
-  --fg-muted:   #8b919a;
-  --fg-dim:     #555a63;
+  --fg:          #eef0f7;
+  --fg-muted:    #9097ad;
+  --fg-dim:      #5a6077;
+  --muted:       var(--fg-muted);
 
-  /* Cool pro accent. Keep legacy name --accent; old pages that use it get the new colour. */
-  --accent:     #5b8def;
-  --accent-dim: #3d6cc9;
-  --accent-fg:  #ffffff;
-  --accent-soft: color-mix(in oklab, #5b8def 14%, transparent);
+  /* brand: ion (mint-cyan) -> nova (violet) */
+  --ion:         #5ef0d0;
+  --nova:        #9a85ff;
+  --flare:       #ff8a5c;
+  --grad-brand:  linear-gradient(120deg, #5ef0d0 0%, #7fb8ff 45%, #9a85ff 100%);
+  --grad-brand-soft: linear-gradient(120deg, rgba(94,240,208,.16), rgba(154,133,255,.16));
 
-  --blue:   #5b8def;
-  --green:  #3ecf8e;
-  --red:    #ef4343;
-  --yellow: #f5a524;
-  --purple: #a876ff;
-  --pink:   #ff6ea9;
+  --accent:      #7fb8ff;
+  --accent-dim:  #5a93e6;
+  --accent-fg:   #04060c;
+  --accent-soft: rgba(127, 184, 255, .14);
+  --accent-glow: 0 0 0 1px rgba(127,184,255,.35), 0 8px 30px -6px rgba(127,184,255,.45);
 
-  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --sans: "Inter", -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --blue:   #7fb8ff;
+  --green:  #46e3a5;
+  --red:    #ff5d6c;
+  --yellow: #ffc15e;
+  --purple: #9a85ff;
+  --pink:   #ff7ac3;
+  --ok:     var(--green);
+  --warn:   var(--yellow);
+  --err:    var(--red);
 
-  --r: 12px;
-  --r-sm: 8px;
+  --mono: "Geist Mono", "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --sans: "Geist", "Inter", -apple-system, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  --display: "Unbounded", "Geist", system-ui, sans-serif;
+
+  --r: 16px;
+  --r-sm: 10px;
+  --r-xs: 7px;
   --r-pill: 999px;
 
-  --shadow-sm: 0 1px 2px rgba(0,0,0,.4), 0 2px 8px rgba(0,0,0,.2);
-  --shadow-lg: 0 4px 24px rgba(0,0,0,.5);
+  --blur: saturate(140%) blur(18px);
+  --shadow-sm: 0 1px 0 rgba(255,255,255,.04) inset, 0 1px 2px rgba(0,0,0,.5), 0 4px 16px -4px rgba(0,0,0,.4);
+  --shadow-lg: 0 1px 0 rgba(255,255,255,.05) inset, 0 24px 60px -12px rgba(0,0,0,.7);
+
+  /* motion */
+  --ease-out:    cubic-bezier(.22, 1, .36, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --dur-1: 140ms;
+  --dur-2: 260ms;
+  --dur-3: 520ms;
 }
 
 * { box-sizing: border-box; }
