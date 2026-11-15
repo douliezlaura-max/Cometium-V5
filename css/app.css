@@ -1344,3 +1344,8 @@ body:has(> .auth) > .view { display: none; }
   .rt-dot[data-s="connecting"] { animation: none; }
   .loading::before { animation-duration: 2.4s; }
 }
+
+/* Row action cells: keep buttons on one line and compact (hubs, configs, devices tables). */
+.tbl td:last-child:has(> .btn) { white-space: nowrap; text-align: right; }
+.tbl td:last-child > .btn { padding: 5px 11px; font-size: 12.5px; }
+.tbl td:last-child > .btn + .btn { margin-left: 4px; }
