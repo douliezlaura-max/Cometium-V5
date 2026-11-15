@@ -1,0 +1,104 @@
+/* Console page - live log tail. Matches the existing dashboard tokens
+   from css/app.css; no new colors, just the channel color map applied
+   to monospaced log rows. */
+
+.cons-bar {
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.cons-sel { max-width: 180px; }
+.cons-txt { max-width: 240px; }
+
+.cons-chans {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.cons-chan {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--fg-muted);
+  cursor: pointer;
+  user-select: none;
+}
+.cons-chan input { margin: 0; }
+.cons-chan-tag {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .04em;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border-soft);
+}
+
+.cons-auto {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--fg-muted);
+  cursor: pointer;
+}
+
+.cons-meta {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 11px;
+  color: var(--fg-muted);
+  margin: 2px 2px 8px;
+}
+.cons-meta .cons-sep { color: var(--fg-dim); }
+.cons-meta .warn { color: var(--accent); }
+
+.cons-view {
+  background: #07080a;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  margin: 0;
+  height: 520px;
+  overflow: auto;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.45;
+  white-space: pre;
+  color: var(--fg);
+}
+.cons-empty {
+  padding: 18px 4px;
+  font-family: var(--sans);
+  white-space: normal;
+}
+
+.cons-line {
+  display: grid;
+  grid-template-columns: 70px 64px 1fr;
+  gap: 10px;
+  padding: 1px 0;
+}
+.cons-ts  { color: var(--fg-dim); }
+.cons-ch  { font-weight: 600; letter-spacing: .02em; }
+.cons-msg { color: var(--fg); white-space: pre-wrap; word-break: break-all; }
+
+/* Channel color map -- also applied to the filter pills. */
+.cons-c-info    .cons-ch, .cons-chan-tag.cons-c-info    { color: var(--fg); }
+.cons-c-warn    .cons-ch, .cons-chan-tag.cons-c-warn    { color: #e8c547; }  /* yellow */
+.cons-c-error   .cons-ch, .cons-chan-tag.cons-c-error   { color: var(--red); }
+.cons-c-system  .cons-ch, .cons-chan-tag.cons-c-system  { color: #4dd0e1; }  /* cyan */
+.cons-c-micro   .cons-ch, .cons-chan-tag.cons-c-micro   { color: var(--fg-dim); }
+.cons-c-metrics .cons-ch, .cons-chan-tag.cons-c-metrics { color: var(--purple); }
+.cons-c-other   .cons-ch, .cons-chan-tag.cons-c-other   { color: var(--fg-muted); }
+
+.cons-line.cons-c-error { background: color-mix(in oklab, var(--red) 6%, transparent); }
+.cons-line.cons-c-warn  { background: color-mix(in oklab, #e8c547 5%, transparent); }
+
+@media (max-width: 1100px) {
+  .cons-view { height: 420px; }
+  .cons-sel, .cons-txt { max-width: 140px; }
+}

@@ -1,0 +1,94 @@
+/* Captcha dashboard — per-account solve stats. */
+
+.cap-filters { grid-template-columns: 2fr 1fr 1fr; }
+@media (max-width: 1100px) {
+  .cap-filters { grid-template-columns: 1fr 1fr; }
+}
+
+.cap-tbl td { vertical-align: middle; }
+.cap-tbl .pill { margin-right: 4px; }
+
+.cap-acc {
+  display: flex; align-items: center; gap: 10px;
+}
+.cap-avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--fg); font-weight: 600; font-size: 12px;
+  border: 1px solid var(--border-soft);
+  font-family: var(--mono);
+  flex: 0 0 28px;
+}
+.cap-acc-txt { display: flex; flex-direction: column; min-width: 0; }
+.cap-acc-n { color: var(--fg); font-weight: 500; }
+.cap-acc-s {
+  font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--fg-dim);
+}
+
+/* Teal pill — reused for solves-today count. The default .pill colour
+   token pool stops at blue, so we introduce a teal variant inline here. */
+.cap-pill-teal {
+  color: #2dd4bf;
+  background: color-mix(in oklab, #2dd4bf 16%, transparent);
+}
+
+/* Status pill: ok / fail / pending. */
+.pill.cap-status[data-k="ok"]      { color: var(--green);  background: color-mix(in oklab, var(--green)  16%, transparent); }
+.pill.cap-status[data-k="fail"]    { color: var(--red);    background: color-mix(in oklab, var(--red)    16%, transparent); }
+.pill.cap-status[data-k="pending"] { color: var(--accent); background: color-mix(in oklab, var(--accent) 16%, transparent); }
+
+/* Driver pill: webview / yescaptcha / capsolver / other / none. */
+.pill.cap-driver                     { color: var(--purple); background: color-mix(in oklab, var(--purple) 14%, transparent); }
+.pill.cap-driver[data-k="webview"]   { color: var(--blue);   background: color-mix(in oklab, var(--blue)   14%, transparent); }
+.pill.cap-driver[data-k="yescaptcha"]{ color: #2dd4bf;       background: color-mix(in oklab, #2dd4bf       14%, transparent); }
+.pill.cap-driver[data-k="capsolver"] { color: var(--purple); background: color-mix(in oklab, var(--purple) 14%, transparent); }
+.pill.cap-driver[data-k="other"]     { color: var(--fg-muted); background: var(--bg-elev-2); }
+.pill.cap-driver[data-k="none"]      { color: var(--fg-dim);   background: var(--bg-elev-2); }
+
+/* Empty-state banner — loud so it is not mistaken for a loaded view. */
+.cap-empty-banner {
+  border-left: 3px solid var(--red);
+  background: color-mix(in oklab, var(--red) 6%, var(--bg-elev));
+}
+.cap-empty-h {
+  color: var(--red);
+  font-size: 11.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.cap-empty-b {
+  color: var(--fg-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.cap-empty-b code {
+  background: var(--bg-elev-2);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+.cap-empty-b .link { color: var(--accent); }
+
+/* Recent-solves log. */
+.cap-log {
+  max-height: 420px;
+  overflow: auto;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-sm);
+  background: var(--bg-elev-2);
+}
+.cap-log-tbl {
+  width: 100%;
+  font-size: 11.5px;
+}
+.cap-log-tbl th {
+  position: sticky; top: 0;
+  background: var(--bg-elev);
+  z-index: 1;
+}
+.cap-log-tbl td, .cap-log-tbl th {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border-soft);
+}

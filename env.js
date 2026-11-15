@@ -1,0 +1,1 @@
+window.ENV={"SUPABASE_URL":"https://jooswqjjdtbnidcdrequ.supabase.co","SUPABASE_ANON_KEY":"sb_publishable_OjPqU9AqF1J2yg2qJHPW-A_R62Nmsf6"};

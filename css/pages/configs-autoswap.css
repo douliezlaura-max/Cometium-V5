@@ -1,0 +1,193 @@
+/* Configs + Autoswap — scoped page styles. Tokens come from app.css. */
+
+/* ========== Configs grid ========== */
+.cfg-grid {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.cfg-tile {
+  position: relative;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px;
+  display: flex; flex-direction: column; gap: 10px;
+  cursor: pointer;
+  transition: border-color .15s, transform .08s;
+  min-height: 108px;
+}
+.cfg-tile:hover { border-color: color-mix(in oklab, var(--accent) 50%, var(--border)); }
+.cfg-tile:active { transform: translateY(1px); }
+
+.cfg-tile-head { display: flex; align-items: center; gap: 10px; }
+.cfg-badge {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--accent); color: var(--accent-fg);
+  display: grid; place-items: center;
+  font-weight: 700; font-family: var(--sans);
+  letter-spacing: .02em; font-size: 12px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.25) inset;
+  flex-shrink: 0;
+}
+.cfg-tile-ttls { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.cfg-game { font-size: 11px; color: var(--fg-muted); letter-spacing: .04em; }
+.cfg-name {
+  font-size: 14px; font-weight: 600; color: var(--fg);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.cfg-meta { color: var(--fg-dim); font-size: 11.5px; }
+
+.cfg-menu-btn {
+  background: transparent; border: 0; color: var(--fg-dim);
+  font-size: 18px; line-height: 1; padding: 4px 8px; border-radius: var(--r-sm);
+  cursor: pointer;
+}
+.cfg-menu-btn:hover { background: var(--bg-hover); color: var(--fg); }
+.cfg-menu-pop {
+  position: absolute; top: 44px; right: 10px;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 6px;
+  display: none; flex-direction: column; gap: 4px;
+  z-index: 50; min-width: 150px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+.cfg-menu-pop.open { display: flex; }
+.cfg-menu-pop .btn { justify-content: flex-start; }
+
+.cfg-tile-new {
+  border-style: dashed;
+  background: transparent;
+  align-items: center; justify-content: center;
+  color: var(--fg-muted);
+}
+.cfg-tile-new:hover { color: var(--accent); }
+.cfg-plus { font-size: 32px; line-height: 1; color: var(--accent); }
+.cfg-new-lbl { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+
+/* ========== Config edit view ========== */
+.cfg-edit-head {
+  display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px;
+}
+.cfg-back {
+  color: var(--fg-muted); text-decoration: none; font-size: 11px;
+  letter-spacing: .1em; text-transform: uppercase;
+}
+.cfg-back:hover { color: var(--accent); }
+
+.cfg-edit {
+  display: grid; grid-template-columns: 220px 1fr; gap: 14px;
+  align-items: start;
+}
+.cfg-edit-nav {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 8px;
+  display: flex; flex-direction: column; gap: 2px;
+  position: sticky; top: 12px;
+}
+.cfg-nav-item {
+  padding: 8px 12px; border-radius: var(--r-sm);
+  color: var(--fg-muted); cursor: pointer; font-size: 12.5px;
+  user-select: none;
+}
+.cfg-nav-item:hover { background: var(--bg-hover); color: var(--fg); }
+.cfg-nav-item.active {
+  background: color-mix(in oklab, var(--accent) 15%, transparent);
+  color: var(--accent);
+}
+.cfg-edit-nav-foot { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-soft); }
+.cfg-edit-nav-foot .btn { width: 100%; justify-content: center; }
+
+.cfg-edit-panel { min-height: 300px; }
+
+.cfg-chips {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px; margin-bottom: 14px;
+}
+.cfg-chip {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 10px 12px;
+}
+.cfg-chip .k {
+  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--fg-dim);
+}
+.cfg-chip .v { color: var(--fg); margin-top: 4px; font-size: 13px; }
+
+.cfg-overview-cards {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px;
+}
+.cfg-ovc {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 12px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.cfg-ovc-h {
+  font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent);
+}
+.cfg-ovc-b { color: var(--fg); font-size: 12.5px; }
+.cfg-ovc-f .btn { font-size: 11px; }
+
+.cfg-json, .cfg-code {
+  font-family: var(--mono) !important; font-size: 12px; line-height: 1.45;
+  tab-size: 2; min-height: 160px; resize: vertical;
+}
+.cfg-code { background: #07080a; }
+
+@media (max-width: 900px) {
+  .cfg-edit { grid-template-columns: 1fr; }
+  .cfg-edit-nav { position: static; flex-direction: row; overflow-x: auto; }
+  .cfg-nav-item { white-space: nowrap; }
+  .cfg-overview-cards { grid-template-columns: 1fr; }
+}
+
+/* ========== Autoswap ========== */
+.as-tbl td { vertical-align: middle; }
+.as-pill-rule {
+  display: inline-flex; align-items: center;
+  padding: 3px 9px; border-radius: 999px;
+  font-size: 11px; font-family: var(--sans);
+  background: color-mix(in oklab, var(--blue) 15%, transparent);
+  color: var(--blue);
+  margin-right: 4px;
+}
+.as-pill-rule.paused {
+  background: color-mix(in oklab, var(--red) 15%, transparent);
+  color: var(--red);
+}
+
+.as-rule-list {
+  display: flex; flex-direction: column; gap: 6px;
+  border-top: 1px solid var(--border-soft); padding-top: 10px;
+}
+.as-rule-row {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 8px 12px;
+}
+.as-rule-main, .as-rule-pause {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--fg); font-size: 12.5px; cursor: pointer;
+}
+.as-rule-pause { color: var(--fg-muted); font-size: 11.5px; }
+.as-rule-main input, .as-rule-pause input { accent-color: var(--accent); }
+
+/* ========== Joining section ========== */
+.cfg-check {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+.cfg-check input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--accent); cursor: pointer; }
+.cfg-check span { color: var(--fg); }
+.cfg-indent {
+  margin: 2px 0 6px 22px;
+  padding-left: 12px;
+  border-left: 2px solid var(--border);
+  display: flex; flex-direction: column; gap: 10px;
+  transition: opacity .12s ease;
+}

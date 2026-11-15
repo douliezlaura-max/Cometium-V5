@@ -1,0 +1,225 @@
+/* Jobs inspector page.
+ * Matches the dashboard tokens from css/app.css:
+ * card / card-h / tbl / pill / btn / input / muted.
+ * Everything here is Jobs-only -- no cross-page selectors.
+ */
+
+/* ---------- filter row ---------- */
+.jobs-filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 1100px) {
+  .jobs-filters { grid-template-columns: 1fr 1fr; }
+}
+
+.jobs-filters .chk-dd {
+  position: relative;
+}
+.jobs-filters .chk-dd-btn {
+  display: flex; align-items: center; gap: 6px;
+  width: 100%;
+  background: var(--bg); color: var(--fg);
+  border: 1px solid var(--border); border-radius: var(--r-sm);
+  padding: 7px 10px;
+  font: inherit; font-size: 13px;
+  cursor: pointer; text-align: left;
+}
+.jobs-filters .chk-dd-btn:hover { border-color: var(--accent-dim); }
+.jobs-filters .chk-dd-btn .caret { margin-left: auto; opacity: .6; }
+.jobs-filters .chk-dd-panel {
+  position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+  z-index: 50;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 8px; max-height: 240px; overflow: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+  display: none;
+}
+.jobs-filters .chk-dd[data-open="true"] .chk-dd-panel { display: block; }
+.jobs-filters .chk-dd-panel label {
+  display: flex; align-items: center; gap: 8px;
+  padding: 4px 6px; border-radius: 4px;
+  font-size: 12px; cursor: pointer;
+}
+.jobs-filters .chk-dd-panel label:hover { background: var(--bg-hover); }
+.jobs-filters .chk-dd-panel .pill { font-size: 10.5px; padding: 1px 6px; }
+
+/* ---------- jobs table ---------- */
+.jobs-wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.jobs-wrap[data-detail="true"] {
+  grid-template-columns: 1fr 520px;
+  gap: 14px;
+}
+@media (max-width: 1400px) {
+  .jobs-wrap[data-detail="true"] {
+    grid-template-columns: 1fr;
+  }
+}
+
+.jobs-tbl {
+  width: 100%;
+  font-size: 12px;
+}
+.jobs-tbl th, .jobs-tbl td {
+  padding: 8px 10px;
+}
+.jobs-tbl td.mono {
+  font-family: var(--mono);
+  color: var(--fg-muted);
+  font-size: 11.5px;
+}
+.jobs-tbl td.id {
+  color: var(--fg-dim);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .02em;
+}
+.jobs-tbl tr[data-selected="true"] td {
+  background: color-mix(in oklab, var(--accent) 10%, transparent);
+}
+.jobs-tbl tr { cursor: pointer; }
+.jobs-tbl tr:hover td { background: var(--bg-hover); }
+
+.jobs-tbl .job-kind {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--fg);
+}
+.jobs-tbl .job-pri {
+  display: inline-block;
+  min-width: 18px; text-align: center;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-muted);
+}
+.jobs-tbl .job-pri[data-hi="true"] { color: var(--accent); font-weight: 600; }
+
+.jobs-tbl .cell-actions {
+  display: flex; gap: 4px; justify-content: flex-end;
+}
+.jobs-tbl .cell-actions .btn {
+  padding: 3px 7px; font-size: 10.5px;
+}
+
+/* ---------- status pill colors ---------- */
+.pill[data-js="pending"] { color: var(--fg-muted); }
+.pill[data-js="taken"]   { color: var(--accent); }
+.pill[data-js="done"]    { color: var(--green); }
+.pill[data-js="failed"]  { color: var(--red); }
+
+/* ---------- side detail panel ---------- */
+.jobs-detail {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px 16px;
+  min-width: 0;
+  position: sticky; top: 12px;
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.jobs-detail-h {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.jobs-detail-h .spacer { flex: 1; }
+.jobs-detail-h .close {
+  cursor: pointer;
+  color: var(--fg-dim); font-size: 18px; line-height: 1;
+  padding: 0 4px;
+}
+.jobs-detail-h .close:hover { color: var(--fg); }
+
+.jobs-detail h3 {
+  margin: 0 0 6px;
+  font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--fg-muted); font-weight: 500;
+}
+.jobs-detail-meta {
+  display: grid; grid-template-columns: 96px 1fr; gap: 4px 10px;
+  font-size: 12px;
+}
+.jobs-detail-meta .k {
+  color: var(--fg-dim); text-transform: uppercase;
+  font-size: 10px; letter-spacing: .08em;
+  padding-top: 2px;
+}
+.jobs-detail-meta .v {
+  color: var(--fg);
+  word-break: break-all;
+  font-family: var(--mono);
+  font-size: 11.5px;
+}
+.jobs-detail .pill { font-size: 11px; }
+
+.jobs-detail-actions {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  padding-top: 4px;
+  border-top: 1px solid var(--border-soft);
+}
+.jobs-detail-actions .btn { padding: 5px 10px; font-size: 11px; }
+
+.jobs-code {
+  background: #07080a;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  margin: 0;
+  font-family: var(--mono); font-size: 11px; line-height: 1.45;
+  color: var(--fg);
+  white-space: pre;
+  overflow: auto;
+  max-height: 320px;
+}
+.jobs-code.err {
+  border-color: color-mix(in oklab, var(--red) 40%, transparent);
+  color: var(--red);
+}
+.jobs-code.empty {
+  color: var(--fg-dim);
+  font-style: italic;
+  white-space: normal;
+}
+
+.jobs-detail-section {
+  display: flex; flex-direction: column; gap: 6px;
+}
+
+.jobs-detail-logs {
+  background: #07080a;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-sm);
+  padding: 8px 10px;
+  max-height: 260px; overflow: auto;
+  font-size: 11px; line-height: 1.45;
+}
+.jobs-detail-logs .lg-row {
+  display: grid; grid-template-columns: 62px 48px 1fr; gap: 8px;
+  padding: 1px 0;
+}
+.jobs-detail-logs .lg-t { color: var(--fg-dim); font-family: var(--mono); }
+.jobs-detail-logs .lg-c { font-weight: 600; font-family: var(--mono); }
+.jobs-detail-logs .lg-c-info   { color: var(--blue); }
+.jobs-detail-logs .lg-c-warn   { color: var(--accent); }
+.jobs-detail-logs .lg-c-error  { color: var(--red); }
+.jobs-detail-logs .lg-c-other  { color: var(--fg-muted); }
+.jobs-detail-logs .lg-c-system { color: var(--purple); }
+.jobs-detail-logs .lg-m {
+  color: var(--fg); white-space: pre-wrap; word-break: break-all;
+  font-family: var(--mono);
+}
+
+/* ---------- pager ---------- */
+.jobs-pager {
+  display: flex; align-items: center; gap: 10px; justify-content: center;
+  padding: 10px 0 0;
+}
+.jobs-pager .muted { font-size: 11px; }

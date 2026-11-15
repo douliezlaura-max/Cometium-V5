@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>Cometium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="css/pages/joiners.css" />
+  <link rel="stylesheet" href="css/pages/games-tools.css" />
+  <link rel="stylesheet" href="css/pages/configs-autoswap.css" />
+  <link rel="stylesheet" href="css/pages/settings.css" />
+  <link rel="stylesheet" href="css/pages/captcha.css" />
+  <link rel="stylesheet" href="css/pages/metrics.css" />
+  <link rel="stylesheet" href="css/pages/console.css" />
+  <link rel="stylesheet" href="css/pages/jobs.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" fill="currentColor"/>
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/>
+          <circle cx="12" cy="3" r="1.5" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="brand-name">Cometium</div>
+        <div class="brand-sub">v3.4</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="#/overview" data-route="overview" class="nav-item active">
+        <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        <span>Overview</span>
+      </a>
+      <a href="#/accounts" data-route="accounts" class="nav-item">
+        <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Accounts</span>
+      </a>
+      <a href="#/devices" data-route="devices" class="nav-item">
+        <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <span>Devices</span>
+      </a>
+      <a href="#/logs" data-route="logs" class="nav-item">
+        <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+        <span>Logs</span>
+      </a>
+      <a href="#/metrics" data-route="metrics" class="nav-item">
+        <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>
+        <span>Metrics</span>
+      </a>
+    </nav>
+
+    <div class="nav-sep">Accounts</div>
+    <a href="#/folders" data-route="folders" class="nav-item">
+      <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <span>Folders</span>
+    </a>
+    <a href="#/import" data-route="import" class="nav-item">
+      <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <span>Import cookies</span>
+    </a>
+    <a href="#/joiners" data-route="joiners" class="nav-item">
+      <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+      <span>Joiners</span>
+    </a>
+
+    <div class="nav-sep">Configs</div>
+    <a href="#/configs" data-route="configs" class="nav-item">
+      <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <span>Configs</span>
+    </a>
+    <a href="#/hubs" data-route="hubs" class="nav-item">
+      <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/><line x1="12" y1="22" x2="12" y2="15.5"/><polyline points="22 8.5 12 15.5 2 8.5"/><polyline points="2 15.5 12 8.5 22 15.5"/><line x1="12" y1="2" x2="12" y2="8.5"/></svg>
+      <span>Hubs</span>
+    </a>
+    <a href="#/autoswap" data-route="autoswap" class="nav-item">
+      <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+      <span>Autoswap</span>
+    </a>
+
+    <div class="nav-sep">Infra</div>
+    <a href="#/jobs" data-route="jobs" class="nav-item">
+      <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <span>Jobs</span>
+    </a>
+    <a href="#/captcha" data-route="captcha" class="nav-item">
+      <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span>Captcha</span>
+    </a>
+    <a href="#/console" data-route="console" class="nav-item">
+      <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+      <span>Console</span>
+    </a>
+    <a href="#/games" data-route="games" class="nav-item">
+      <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+      <span>Running games</span>
+    </a>
+    <a href="#/tools" data-route="tools" class="nav-item">
+      <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      <span>Tools</span>
+    </a>
+
+    <div class="nav-spacer"></div>
+    <a href="#/settings" data-route="settings" class="nav-item nav-settings">
+      <svg class="nav-ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6m11-11h-6M7 12H1m15.5-7.5-4.24 4.24M7.74 16.26 3.5 20.5M20.5 20.5l-4.24-4.24M7.74 7.74 3.5 3.5"/></svg>
+      <span>Settings</span>
+    </a>
+
+    <div class="sidebar-foot">
+      <div class="rt-row">
+        <span class="rt-dot" id="realtime-status" data-s="disconnected" title="realtime: disconnected"></span>
+        <span class="rt-lbl" id="realtime-status-lbl">offline</span>
+      </div>
+      <div class="foot-id">
+        <span class="foot-id-lbl">signed in</span>
+        <span id="who" class="foot-id-val">—</span>
+      </div>
+    </div>
+  </aside>
+
+  <main id="view" class="view">
+    <div class="loading">loading…</div>
+  </main>
+
+  <script src="/env.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/realtime.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/pages/overview.js"></script>
+  <script src="js/pages/accounts.js"></script>
+  <script src="js/pages/folders.js"></script>
+  <script src="js/pages/joiners.js"></script>
+  <script src="js/pages/import.js"></script>
+  <script src="js/pages/captcha-settings.js"></script>
+  <script src="js/pages/captcha.js"></script>
+  <script src="js/pages/configs.js"></script>
+  <script src="js/pages/hubs.js"></script>
+  <script src="js/pages/templates.js"></script>
+  <script src="js/pages/autoswap.js"></script>
+  <script src="js/pages/devices.js"></script>
+  <script src="js/pages/logs.js"></script>
+  <script src="js/pages/games.js"></script>
+  <script src="js/pages/tools.js"></script>
+  <script src="js/pages/settings.js"></script>
+  <script src="js/pages/metrics.js"></script>
+  <script src="js/pages/console.js"></script>
+  <script src="js/pages/jobs.js"></script>
+  <script src="js/pages/placeholder.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

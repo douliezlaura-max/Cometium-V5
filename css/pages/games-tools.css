@@ -1,0 +1,160 @@
+/* games + tools page styles — hooks into app.css variables only */
+
+/* ---------- games: tabs row ---------- */
+.g-tabs {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 14px;
+}
+.g-tab {
+  background: var(--bg-elev); color: var(--fg-muted);
+  border: 1px solid var(--border); border-radius: var(--r-sm);
+  padding: 8px 14px; font: inherit; cursor: pointer;
+  font-size: 12px;
+}
+.g-tab:hover { background: var(--bg-hover); color: var(--fg); }
+.g-tab.on {
+  background: color-mix(in oklab, var(--accent) 15%, transparent);
+  border-color: color-mix(in oklab, var(--accent) 40%, transparent);
+  color: var(--accent);
+}
+
+/* ---------- games: big category tiles ---------- */
+.g-tiles {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 14px;
+}
+.g-tile {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 16px 18px;
+  min-height: 92px;
+}
+.g-tile-k {
+  font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.g-tile-v {
+  font-size: 26px; font-weight: 600; color: var(--accent);
+  margin-top: 6px; font-family: var(--sans);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.g-tile-sub { color: var(--fg-dim); font-size: 11px; margin-top: 2px; }
+.g-tile[data-cat="potions"] .g-tile-v { color: var(--blue); }
+.g-tile[data-cat="event"]   .g-tile-v { color: var(--purple); }
+.g-tile[data-cat="pets"]    .g-tile-v { color: var(--green); }
+
+/* ---------- games: 4-column time-window grid ---------- */
+.g-windows {
+  display: grid; gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+}
+.g-win {
+  background: var(--bg-elev-2); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 12px;
+}
+.g-win-h {
+  font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 8px;
+}
+.g-win-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 3px 0; font-size: 12px;
+  border-top: 1px solid var(--border-soft);
+}
+.g-win-row:first-of-type { border-top: 0; }
+.g-win-row > span:last-child { color: var(--fg); font-family: var(--sans); }
+
+/* ---------- games: rarity filter pills ---------- */
+.g-rarities {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 12px;
+}
+.g-pill {
+  background: var(--bg-elev-2); color: var(--fg-muted);
+  border: 1px solid var(--border); border-radius: 999px;
+  padding: 4px 10px; font: inherit; font-size: 11px; cursor: pointer;
+  font-family: var(--sans);
+}
+.g-pill:hover { background: var(--bg-hover); color: var(--fg); }
+.g-pill.on {
+  background: color-mix(in oklab, var(--pt, var(--accent)) 20%, transparent);
+  border-color: color-mix(in oklab, var(--pt, var(--accent)) 50%, transparent);
+  color: var(--pt, var(--accent));
+}
+
+/* ---------- games: item grid ---------- */
+.g-grid {
+  display: grid; gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+}
+.g-item {
+  background: var(--bg-elev-2); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 12px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.g-item-h { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.g-item-ico {
+  width: 28px; height: 28px; border-radius: 6px; flex: none;
+  background: color-mix(in oklab, var(--pt, var(--accent)) 22%, var(--bg));
+  color: var(--pt, var(--accent));
+  display: grid; place-items: center;
+  font-weight: 700; font-size: 13px; font-family: var(--sans);
+}
+.g-item-name {
+  font-size: 12px; color: var(--fg); font-weight: 500;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.g-item-v {
+  font-size: 18px; font-weight: 600; color: var(--accent);
+  font-family: var(--sans);
+}
+.g-item-f {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 11px;
+}
+.g-pill-mini {
+  display: inline-block; padding: 1px 7px; border-radius: 999px;
+  font-size: 10px; font-family: var(--sans);
+  background: color-mix(in oklab, var(--pt, var(--accent)) 18%, transparent);
+  color: var(--pt, var(--accent));
+}
+
+/* ---------- tools ---------- */
+.t-pills {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.t-pill {
+  background: var(--bg-elev-2); color: var(--fg);
+  border: 1px solid var(--border); border-radius: 999px;
+  padding: 6px 12px; font: inherit; font-size: 12px; cursor: pointer;
+  font-family: var(--sans);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.t-pill:hover { background: var(--bg-hover); border-color: color-mix(in oklab, var(--accent) 40%, var(--border)); }
+.t-pill-n {
+  background: var(--bg); color: var(--fg-muted);
+  border-radius: 999px; padding: 1px 7px;
+  font-size: 10.5px; letter-spacing: .04em;
+}
+.t-row {
+  display: flex; align-items: center; gap: 14px;
+}
+.t-row .spacer { flex: 1; }
+.t-chk {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11.5px; color: var(--fg-muted); cursor: pointer;
+}
+.t-chk input { accent-color: var(--accent); }
+.t-json {
+  font-family: var(--mono); font-size: 12px;
+  background: var(--bg); min-height: 240px;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1100px) {
+  .g-tiles, .g-windows { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px) {
+  .g-tiles, .g-windows { grid-template-columns: 1fr; }
+  .t-row { flex-wrap: wrap; }
+}
