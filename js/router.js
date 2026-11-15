@@ -20,7 +20,17 @@ F.route = function () {
     // late rejection can't clobber the page the user is actually on.
     if (myToken !== F._routeToken) return;
     console.error(err);
-    view.innerHTML = `<div class="empty">page error: ${String(err?.message || err)}</div>`;
+    // v3.11 — F.esc the error message before interpolation. A page that
+    // surfaces user-controlled text in its error (e.g. an account name
+    // whose server-side validation failed, or a captcha-bypass message
+    // pulled from a remote JSON) could otherwise inject <script> here.
+    // F.esc is defined in ui.js and escapes <, >, &, ", '.
+    const safe = typeof F.esc === "function"
+      ? F.esc(String(err && err.message || err))
+      : String(err && err.message || err)
+          .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    view.innerHTML = `<div class="empty">page error: ${safe}</div>`;
   });
 };
 

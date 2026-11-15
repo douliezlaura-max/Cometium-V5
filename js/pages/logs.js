@@ -97,10 +97,20 @@ function render(s) {
       ? "—"
       : d.toLocaleTimeString();
     const badTs = ts === "—";
+    // v3.11 — escape r.channel in attribute, class, and text contexts.
+    // Pre-v3.11 interpolated raw into data-c="…" / class="log-c log-c-…"
+    // / and as text. A row written by a worker with a crafted channel
+    // (e.g. `"><img onerror=…>`) owned the viewer's session. Clamp to a
+    // conservative allowlist first (channels are machine-generated and
+    // should match /^[a-z0-9_-]{1,32}$/); fall back to F.esc for anything
+    // that slips the regex (defense-in-depth).
+    const rawCh = String(r.channel || "");
+    const chSafe = /^[a-z0-9_-]{1,32}$/i.test(rawCh) ? rawCh : "other";
+    const chText = chSafe.padEnd(5);
     return `
-    <div class="log-row" data-c="${r.channel}">
+    <div class="log-row" data-c="${F.esc(chSafe)}">
       <span class="log-t${badTs ? " muted" : ""}" title="${badTs ? F.esc(String(r.at || "")) : ""}">${ts}</span>
-      <span class="log-c log-c-${r.channel}">${r.channel.padEnd(5)}</span>
+      <span class="log-c log-c-${F.esc(chSafe)}">${F.esc(chText)}</span>
       <span class="log-m">${F.esc(r.text)}</span>
     </div>
   `;

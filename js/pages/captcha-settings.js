@@ -11,14 +11,46 @@ const SENDS_OPTIONS = [
 const EXAMPLE_PAYLOAD = JSON.stringify({ username: "example_user", cookie: "_|WARNING:-DO-NOT-SHARE-THIS...", custom_field: "your value" }, null, 2);
 
 F.pages["captcha-settings"] = async function (view) {
+  // v3.11 — master switch now persists server-side in key_value_store
+  // (workspace-scoped). Pre-v3.11 only touched localStorage so toggling
+  // on the dashboard didn't actually stop workers from solving — the
+  // operator thought they'd turned it off, yescaptcha spend kept going.
+  // localStorage still holds a mirror for first-paint responsiveness.
   const s = { hooks: [], masterOn: localStorage.getItem("captcha_master") !== "0" };
 
   view.innerHTML = shellHtml(s);
+  const masterEl = view.querySelector("#cap-master");
 
-  view.querySelector("#cap-master").addEventListener("change", (e) => {
+  // Pull server-side master state and sync the checkbox.
+  (async () => {
+    try {
+      const { data } = await F.sbTable("key_value_store")
+        .select("value")
+        .eq("owner_id", F.ownerId)
+        .eq("key", "captcha_master")
+        .maybeSingle();
+      if (data && data.value != null) {
+        s.masterOn = data.value !== false && data.value !== "0";
+        masterEl.checked = s.masterOn;
+        localStorage.setItem("captcha_master", s.masterOn ? "1" : "0");
+      }
+    } catch (_e) { /* server-side state optional; keep local */ }
+  })();
+
+  masterEl.addEventListener("change", async (e) => {
     s.masterOn = e.target.checked;
     localStorage.setItem("captcha_master", s.masterOn ? "1" : "0");
-    F.toast(s.masterOn ? "solver on" : "solver off");
+    try {
+      await F.sbTable("key_value_store").upsert({
+        owner_id: F.ownerId,
+        key:      "captcha_master",
+        value:    s.masterOn,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: "owner_id,key" });
+      F.toast(s.masterOn ? "solver on" : "solver off");
+    } catch (err) {
+      F.toast("saved locally — server write failed: " + (err && err.message || err), "err");
+    }
   });
   view.querySelector("#cap-add").addEventListener("click", () => openEdit(null, () => load(s)));
 
