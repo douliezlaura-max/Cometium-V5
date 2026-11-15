@@ -142,7 +142,22 @@ function mountAuth(topError = "") {
   el.className = "auth";
   el.innerHTML = `
     <div class="auth-box">
-      <h2>Cometium</h2>
+      <div class="auth-brand">
+        <div class="auth-mark">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="am-tail" x1="2.5" y1="21.5" x2="16" y2="8" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5ef0d0" stop-opacity="0"/><stop offset=".75" stop-color="#5ef0d0" stop-opacity=".6"/><stop offset="1" stop-color="#7fb8ff"/></linearGradient>
+              <linearGradient id="am-core" x1="12" y1="4" x2="20" y2="12" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#e9fffa"/><stop offset=".5" stop-color="#5ef0d0"/><stop offset="1" stop-color="#9a85ff"/></linearGradient>
+            </defs>
+            <path d="M2.5 21.5 14.2 6.2 17.8 9.8Z" fill="url(#am-tail)"/>
+            <path d="M6.5 21.5 15 13M2.5 17.5 11 9" stroke="url(#am-tail)" stroke-width="1" stroke-linecap="round" opacity=".55"/>
+            <circle cx="16" cy="8" r="4" fill="url(#am-core)"/>
+            <circle cx="15" cy="7" r="1.4" fill="#fff" fill-opacity=".85"/>
+          </svg>
+        </div>
+        <h2>Cometium</h2>
+        <p class="auth-sub">Sign in to your fleet console</p>
+      </div>
       <div class="auth-tabs">
         <button class="auth-tab active" data-tab="pwd">Email</button>
         <button class="auth-tab"        data-tab="code">Login code</button>
